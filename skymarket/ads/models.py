@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 
-from skymarket.users.models import User
+from users.models import User
 
 
 class Ad(models.Model):
@@ -9,13 +9,13 @@ class Ad(models.Model):
     price = models.PositiveIntegerField(verbose_name="Цена")
     author = models.ForeignKey(User,on_delete=models.CASCADE,verbose_name="Автор")
     description = models.CharField(max_length=255, verbose_name="Описание")
-    created_at = models.DateField(verbose_name="Дата создания")
+    created_at = models.DateTimeField(verbose_name="Дата создания")
     image = models.ImageField(upload_to="images/", verbose_name="Картинка", null=True, blank=True)
 
     class Meta:
         verbose_name = "Объявление"
         verbose_name_plural = "Объявления"
-        ordering = "-created_at"
+        ordering = ["-created_at"]
 
 
 class Comment(models.Model):
@@ -27,4 +27,4 @@ class Comment(models.Model):
     class Meta:
         verbose_name = "Комментарий"
         verbose_name_plural = "Комментарии"
-        ordering = "-created_at"
+        ordering = ["-created_at"]

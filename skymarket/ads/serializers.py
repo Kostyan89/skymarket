@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 
 # TODO Сериалайзеры. Предлагаем Вам такую структуру, однако вы вправе использовать свою
-from skymarket.ads.models import Comment, Ad
+from ads.models import Comment, Ad
 
 
 class CommentSerializer(serializers.ModelSerializer):
