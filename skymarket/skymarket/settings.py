@@ -86,13 +86,16 @@ WSGI_APPLICATION = "skymarket.wsgi.application"
 # TODO здесь мы настраиваем аутентификацию и пагинацию
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
 }
 # TODO здесь мы настраиваем Djoser
 DJOSER = {
     'SERIALIZERS': {
         'user_create': 'users.serializers.UserRegistrationSerializer'
     },
-    'LOGIN_FIELD': 'email'
+    'LOGIN_FIELD': 'email',
 }
 
 # Database

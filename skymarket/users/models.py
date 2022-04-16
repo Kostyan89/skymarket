@@ -7,13 +7,13 @@ from skymarket.users.managers import UserRole, UserManager
 
 class User(AbstractBaseUser):
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=100, verbose_name="Пароль")
-    last_login = models.DateTimeField(blank=True,null=True)
+    password = models.CharField(max_length=255, verbose_name="Пароль")
+    last_login = models.DateTimeField(blank=True, null=True)
     phone = PhoneNumberField(verbose_name="Телефон для связи")
     role = models.CharField(max_length=20, choices=UserRole.choices, default=UserRole.USER,
                             verbose_name="Роль пользователя")
-    first_name = models.CharField(max_length=100,verbose_name="Имя")
-    last_name = models.CharField(max_length=100,verbose_name="Фамилия")
+    first_name = models.CharField(max_length=100, verbose_name="Имя")
+    last_name = models.CharField(max_length=100, verbose_name="Фамилия")
     is_active = models.BooleanField(default=True)
 
     USERNAME_FIELD = 'email'
